@@ -12,31 +12,28 @@ export default function HomeScreen({ navigation, route }: HomeScreenProps) {
   const [menuItems, setMenuItems] = useState<{ dishName: string, description: string, course: string, price: number }[]>([]);
 
   useEffect(() => {
-    // Check if newItem exists and is defined in route.params
     if (route.params?.newItem) {
       setMenuItems((prevItems) => [...prevItems, route.params.newItem as { dishName: string; description: string; course: string; price: number }]);
     }
   }, [route.params?.newItem]);
-  
 
   return (
-    
     <ImageBackground source={backgroundimg} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}>Chef's Menu</Text>
-        <Button title="Add Menu" onPress={() => navigation.navigate('AddMenu')} />
-        <Button title="Filter Menu" onPress={() => navigation.navigate('FilterMenu')} />
-        
-        <Text>Total Items: {menuItems.length}</Text>
+        <Button color="blue" title="Add Menu" onPress={() => navigation.navigate('AddMenu')} />
+        <Button color="green" title="Filter Menu" onPress={() => navigation.navigate('FilterMenu')} />
+
+        <Text style={styles.menulength}>Total Items: {menuItems.length}</Text>
 
         <FlatList
           data={menuItems}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={styles.menuItem}>
-              <Text>{item.dishName} - {item.course}</Text>
-              <Text>{item.description}</Text>
-              <Text>${item.price.toFixed(2)}</Text>
+              <Text style={styles.menuItemText}>{item.dishName} - {item.course}</Text>
+              <Text style={styles.menuItemText}>{item.description}</Text>
+              <Text style={styles.menuItemText}>${item.price.toFixed(2)}</Text>
             </View>
           )}
         />
@@ -48,7 +45,7 @@ export default function HomeScreen({ navigation, route }: HomeScreenProps) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    resizeMode: 'cover', 
+    resizeMode: 'cover',
   },
   container: {
     flex: 1,
@@ -61,10 +58,17 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-condensed',
     marginBottom: 20,
     color: 'white',
-
   },
   menuItem: {
     borderBottomWidth: 1,
     paddingVertical: 10,
+  },
+  menuItemText: {
+    fontSize: 20, // Increased font size
+    color: 'blue', // Color for all menu item text
+  },
+  menulength: {
+    color: 'blue',
+    fontSize: 24,
   },
 });
