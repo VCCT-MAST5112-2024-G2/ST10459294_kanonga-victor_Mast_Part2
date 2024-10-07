@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet,ImageBackground } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
@@ -24,31 +24,31 @@ export default function AddMenuScreen({ navigation }: AddMenuScreenProps) {
 
   return (
     <ImageBackground source={backgroundimg} style={styles.background}>
-     
-    <View style={styles.container}>
-      <Text style={styles.label}>Dish Name:</Text>
-      <TextInput style={styles.input} onChangeText={setDishName} value={dishName} />
 
-      <Text style={styles.label}>Description:</Text>
-      <TextInput style={styles.input} onChangeText={setDescription} value={description} />
+      <View style={styles.container}>
+        <Text style={styles.label}>Dish Name:</Text>
+        <TextInput style={styles.input} onChangeText={setDishName} value={dishName} />
 
-      <Text style={styles.label}>Course:</Text>
-      <Picker  style={styles.course} selectedValue={course} onValueChange={setCourse}>
-        {courses.map((course) => (
-          <Picker.Item  style={styles.course} key={course} label={course} value={course} />
-        ))}
-      </Picker>
+        <Text style={styles.label}>Description:</Text>
+        <TextInput style={styles.input} onChangeText={setDescription} value={description} />
 
-      <Text style={styles.course}>Price:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setPrice}
-        value={price}
-        keyboardType="numeric"
-      />
+        <Text style={styles.label}>Course:</Text>
+        <Picker style={styles.course} selectedValue={course} onValueChange={setCourse}>
+          {courses.map((course) => (
+            <Picker.Item style={styles.course} key={course} label={course} value={course} />
+          ))}
+        </Picker>
 
-      <Button title="Add Dish" onPress={handleSubmit} />
-    </View>
+        <Text style={styles.course}>Price:</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setPrice}
+          value={price}
+          keyboardType="numeric"
+        />
+
+        <Button title="Add Dish" onPress={handleSubmit} />
+      </View>
     </ImageBackground>
   );
 }
@@ -60,13 +60,13 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 24,
-    color: 'blue', 
-    fontWeight: 'bold', 
-    textShadowColor: 'blue(0, 0, 0, 0.75)', 
+    color: 'blue',
+    fontWeight: 'bold',
+    textShadowColor: 'blue(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 20,
-    
-   marginVertical: 20,
+
+
+    marginVertical: 20,
   },
   input: {
     fontSize: 24,
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 5,
     marginBottom: 10,
-    borderColor: 'blue', 
-    color: 'blue', 
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+    borderColor: 'blue',
+    color: 'blue',
+    backgroundColor: 'white',
   },
   background: {
     flex: 1,
@@ -85,12 +85,10 @@ const styles = StyleSheet.create({
 
   course: {
     fontSize: 24,
-    color: 'blue', 
-    fontWeight: 'bold', 
-    textShadowColor: 'blue(0, 0, 0, 0.75)', 
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 20,
-    
-   marginVertical: 20,
+    color: 'blue',
+    fontWeight: 'bold',
+    textShadowColor: 'blue(0, 0, 0, 0.75)',
+
+    marginVertical: 20,
   },
 });

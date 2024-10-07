@@ -3,7 +3,7 @@ import { View, Text, Button, FlatList, StyleSheet, ImageBackground } from 'react
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 
-// Import the background image
+
 const backgroundimg = require('../assets/mainscreen.jpeg');
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   menuItemText: {
-    fontSize: 20, 
-    color: 'blue', 
+    fontSize: 20,
+    color: 'blue',
   },
   menulength: {
     color: 'blue',
