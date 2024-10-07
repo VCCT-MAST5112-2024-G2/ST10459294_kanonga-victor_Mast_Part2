@@ -4,7 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 
 // Import the background image
-const backgroundimg = require('C:/Users/lab_services_student/Desktop/kanonga victor victor_ ST10459294_part2/kanonga-victor-ST10459294-Mast-part2/assets/mainscreen.jpeg');
+const backgroundimg = require('../assets/mainscreen.jpeg');
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   menuItemText: {
-    fontSize: 20, // Increased font size
-    color: 'blue', // Color for all menu item text
+    fontSize: 20, 
+    color: 'blue', 
   },
   menulength: {
     color: 'blue',

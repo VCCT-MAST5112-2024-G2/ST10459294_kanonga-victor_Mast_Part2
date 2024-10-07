@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
-import AddMenuScreen from './screens/AddManuScreen';
+import AddMenuScreen from './screens/AddMenuScreen';
 import FilterMenuScreen from './screens/FilterMenuScreen';
 import { RootStackParamList } from './types';
 
