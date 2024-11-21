@@ -13,6 +13,20 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
   export default function HomeScreen({ navigation, route }: HomeScreenProps) {
     const [menuItems, setMenuItems] = useState<{ dishName: string; description: string; course: string; price: number }[]>([]);
+
+// Separate items by course
+const starters = menuItems.filter((item) => item.course === 'Starters');
+const mains = menuItems.filter((item) => item.course === 'Mains');
+const desserts = menuItems.filter((item) => item.course === 'Desserts');
+
+// Calculate average prices
+const calculateAveragePrice = (items: typeof menuItems) =>
+  items.length > 0 ? items.reduce((sum, item) => sum + item.price, 0) / items.length : 0;
+
+const averagePriceOverall = calculateAveragePrice(menuItems);
+const averagePriceStarters = calculateAveragePrice(starters);
+const averagePriceMains = calculateAveragePrice(mains);
+const averagePriceDesserts = calculateAveragePrice(desserts);
     
     // Calculate average price
     const averagePrice = menuItems.length > 0 
@@ -45,7 +59,11 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
         <Button title="Filter Menu" onPress={() => navigation.navigate('FilterMenu', { menuItems })} />
 
         <Text style={styles.totalItems}>Total Items: {menuItems.length}</Text>
-      <Text style={styles.averagePrice}>Average Price: ${averagePrice.toFixed(2)}</Text>
+        <Text style={styles.totalItems}>Total Items: {menuItems.length}</Text>
+      <Text style={styles.averagePrice}>Average Price: ${averagePriceOverall.toFixed(2)}</Text>
+      <Text style={styles.averagePrice}>Average Price for starters: ${averagePriceStarters.toFixed(2)}</Text>
+      <Text style={styles.averagePrice}>Average Price for mains: ${averagePriceMains.toFixed(2)}</Text>
+      <Text style={styles.averagePrice}>Average Price for deserts: ${averagePriceDesserts.toFixed(2)}</Text>
 
         <FlatList
           data={menuItems}
