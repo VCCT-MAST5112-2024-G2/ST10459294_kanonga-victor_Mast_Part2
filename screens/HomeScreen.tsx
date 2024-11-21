@@ -50,11 +50,13 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
         <FlatList
           data={menuItems}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
+          renderItem={({ item ,index}) => (
             <View style={styles.menuItem}>
+              <Text style={styles.dishName}>{item.dishName} - {item.course}</Text>
               <Text style={styles.menuItemText}>{item.dishName} - {item.course}</Text>
               <Text style={styles.menuItemText}>{item.description}</Text>
               <Text style={styles.menuItemText}>${item.price.toFixed(2)}</Text>
+              <Button title="Remove" color="red" onPress={() => removeItem(index)} />
             </View>
           )}
         />
@@ -68,6 +70,14 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
+  totalItems: {
+    fontSize: 18,
+    marginTop: 10,
+  },
+  averagePrice: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -79,11 +89,16 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-condensed',
     marginBottom: 20,
     color: 'white',
-  },
-  menuItem: {
+  }, menuItem: {
     borderBottomWidth: 1,
     paddingVertical: 10,
+    width: '100%',
   },
+  dishName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+ 
   menuItemText: {
     fontSize: 20,
     color: 'blue',
